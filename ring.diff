@@ -1,0 +1,45 @@
+diff --git a/src/agreement.rs b/src/agreement.rs
+index ac26c186..1041fc52 100644
+--- a/src/agreement.rs
++++ b/src/agreement.rs
+@@ -90,15 +90,15 @@ pub use ec::curve25519::x25519::X25519;
+ /// A key agreement algorithm.
+ #[derive(Eq, PartialEq)]
+ pub struct Algorithm {
+-    pub(crate) i: ec::AgreementAlgorithmImpl,
++    pub i: ec::AgreementAlgorithmImpl,
+ }
+ 
+ /// An ephemeral private key for use (only) with `agree_ephemeral`. The
+ /// signature of `agree_ephemeral` ensures that an `EphemeralPrivateKey` can be
+ /// used for at most one key agreement.
+ pub struct EphemeralPrivateKey {
+-    private_key: ec::PrivateKey,
+-    alg: &'static Algorithm,
++    pub private_key: ec::PrivateKey,
++    pub alg: &'static Algorithm,
+ }
+ 
+ impl<'a> EphemeralPrivateKey {
+diff --git a/src/lib.rs b/src/lib.rs
+index bad23ca9..30b6fac4 100644
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -46,7 +46,7 @@
+ // `#[derive(...)]` uses `#[allow(unused_qualifications )]` internally.
+ #![deny(
+     box_pointers,
+-    missing_docs,
++//    missing_docs,
+     trivial_numeric_casts,
+     unstable_features,
+     unused_qualifications,
+@@ -116,7 +116,7 @@ pub mod der;
+ pub mod digest;
+ 
+ #[path = "ec/ec.rs"]
+-mod ec;
++pub mod ec;
+ 
+ pub mod error;
+ pub mod hkdf;

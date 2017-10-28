@@ -1,0 +1,19 @@
+[package]
+name = "nnshake"
+version = "0.1.0"
+authors = ["doomsparkles <doomsparkles@openmailbox.org>"]
+categories = ["cryptography"]
+description = "Simple ECDH client/server handshake protocol in Rust"
+keywords = ["crypto", "cryptography", "ECC", "ECDH", "AEAD", "protocol"]
+license-file = "LICENSE"
+readme = "README.md"
+
+[dependencies]
+error-chain = "0.11.0"
+ring = { path = "ring" }
+untrusted = "0.6.0"
+clear_on_drop = "0.2.2"
+blake2-rfc = "0.2.17"
+
+[dev-dependencies]
+base64 = "0.7.0"
